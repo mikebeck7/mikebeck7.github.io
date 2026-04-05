@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendor Comp Redesign | Mike Beck</title>
+  <meta name="description" content="Caught a compensation fix that would have made things worse. Built one that solved both problems." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f12;
+      --bg2: #13161a;
+      --bg3: #1a1e24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #4169e1;
+      --accent2: #6688ff;
+      --text: #e8e6e1;
+      --muted: #7a7972;
+      --bright: #f5f2ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(13,15,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.back-link { color: var(--accent); }
+
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 9rem 3rem 6rem;
+    }
+
+    .project-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+    }
+
+    .project-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--bright);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .body-copy p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .numbers-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .numbers-header {
+      grid-column: 1 / -1;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .number-item {
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .number-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .number-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .what-shows {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .what-shows-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .what-shows p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      line-height: 1.8;
+    }
+
+    .back-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-nav a:hover { color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(122,121,114,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-wrapper { padding: 7rem 1.5rem 4rem; }
+      .numbers-block { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Mike Beck</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#experience">Experience</a></li>
+      <li><a href="/#portfolio" class="back-link">← Portfolio</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <div class="project-label">Compensation Design · Influence</div>
+
+    <h1>Caught a Compensation Fix That Would Have Made Things Worse. Built One That Solved Both Problems.</h1>
+
+    <p class="subhead">The comp team was about to cap top performers to save budget. The quota gap was not coming from the top. It was coming from the middle.</p>
+
+    <div class="body-copy">
+      <p>A vendor incentive program was bleeding budget at 180%+ of plan while only hitting 95% of quota. The compensation team's solution was to eliminate the top-tier multiplier. On paper, it would fix the budget math. In practice, it would punish the only reps producing while leaving the actual problem untouched. The quota gap was not a top-performer problem. It was a participation problem. The middle of the performance distribution had no meaningful incentive to engage.</p>
+
+      <p>This was outside my defined scope. My mandate was increasing performance, not compensation design. But the structural flaw in the proposed fix was clear, so I built the case. I modeled multiple compensation scenarios showing projected payout-to-budget ratios and quota impact under each structure: the comp team's proposed cap, a full redistribution, and a hybrid. The data showed that lowering the per-unit payout at the top tier (rather than eliminating it) would reduce budget exposure while increasing lower-tier payouts enough to give the middle meaningful skin in the game.</p>
+
+      <p>The harder problem was not the math. It was the politics. The compensation director had already committed to his approach. I proposed running my model as a 60-day pilot using a window he had already planned, framing it as a test that preserved his fallback option. If the pilot failed, his original plan was still on deck. The pilot did not fail. Quota went from 95% to 100%+. Payout-to-budget dropped from 180%+ to 98%. Top producers maintained their performance. The middle started participating.</p>
+    </div>
+
+    <div class="numbers-block">
+      <div class="numbers-header">By the Numbers</div>
+      <div class="number-item">
+        <span class="number-value">95% → 100%+</span>
+        <span class="number-label">Quota achievement</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">180%+ → 98%</span>
+        <span class="number-label">Payout-to-budget ratio</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">60 days</span>
+        <span class="number-label">Pilot validation period</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">Both solved</span>
+        <span class="number-label">Quota gap closed and budget overrun eliminated simultaneously</span>
+      </div>
+    </div>
+
+    <div class="what-shows">
+      <div class="what-shows-label">What This Shows</div>
+      <p>Two things. First, the ability to analyze a compensation structure and identify when a proposed fix addresses the wrong variable. Second, the ability to navigate organizational dynamics when presenting an alternative to someone else's plan. The scenario modeling was the analytical work. The pilot framing was the influence work. Both were required.</p>
+    </div>
+
+    <div class="back-nav">
+      <a href="/#portfolio">← Back to Portfolio</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-name">Mike Beck · Phoenix, AZ</div>
+    <div class="footer-copy">Fractional RevOps &amp; GTM · Strength Coaching · Phoenix, AZ</div>
+  </footer>
+
+</body>
+</html>

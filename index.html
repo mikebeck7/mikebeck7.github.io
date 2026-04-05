@@ -672,6 +672,83 @@
       transform: none;
     }
 
+    /* ── PORTFOLIO ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: var(--border);
+    }
+
+    .portfolio-card {
+      background: var(--bg2);
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.3s ease;
+    }
+
+    .portfolio-card:hover::before { height: 100%; }
+    .portfolio-card:hover { background: var(--bg3); }
+
+    .portfolio-card-meta {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .portfolio-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--bright);
+      line-height: 1.25;
+    }
+
+    .portfolio-card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .portfolio-card-outcome {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .portfolio-card-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .portfolio-card:hover .portfolio-card-link { color: var(--accent); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
@@ -697,6 +774,7 @@
       section { padding: 4rem 1.5rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
       .form-row { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -709,6 +787,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -890,6 +969,58 @@
           <div class="exp-highlight">↗ #1 Store Ranking — Regional · Winners Circle 2014</div>
         </div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-header reveal">
+      <span class="section-label">Portfolio</span>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title reveal" style="margin-bottom: 2.5rem;">Selected <em>Projects</em></h2>
+    <div class="portfolio-grid reveal">
+
+      <a href="portfolio/metrics-framework-redesign.html" class="portfolio-card">
+        <div class="portfolio-card-meta">Revenue Operations · Metrics Design</div>
+        <h3 class="portfolio-card-title">Rebuilt a Revenue Metrics Framework. Found $7.3M Nobody Was Measuring.</h3>
+        <p class="portfolio-card-desc">When the strategy changes but the scorecard doesn't, the scorecard wins. This project fixed the scorecard.</p>
+        <div class="portfolio-card-outcome">$7.3M annual revenue increase</div>
+        <div class="portfolio-card-link">View case study →</div>
+      </a>
+
+      <a href="portfolio/vendor-comp-redesign.html" class="portfolio-card">
+        <div class="portfolio-card-meta">Compensation Design · Influence</div>
+        <h3 class="portfolio-card-title">Caught a Compensation Fix That Would Have Made Things Worse. Built One That Solved Both Problems.</h3>
+        <p class="portfolio-card-desc">The comp team was about to cap top performers to save budget. The quota gap was not coming from the top. It was coming from the middle.</p>
+        <div class="portfolio-card-outcome">Quota 95% → 100%+, budget 180% → 98%</div>
+        <div class="portfolio-card-link">View case study →</div>
+      </a>
+
+      <a href="portfolio/acp-enrollment-redesign.html" class="portfolio-card">
+        <div class="portfolio-card-meta">Program Management · Automation</div>
+        <h3 class="portfolio-card-title">Replaced a Broken Enrollment Workflow. 200K More Customers Enrolled.</h3>
+        <p class="portfolio-card-desc">A federal subsidy program was missing target by a wide margin. The fix was not better marketing. It was removing one unnecessary step.</p>
+        <div class="portfolio-card-outcome">40% enrollment increase (500K → 700K)</div>
+        <div class="portfolio-card-link">View case study →</div>
+      </a>
+
+      <a href="portfolio/job-search-pipeline-automation.html" class="portfolio-card">
+        <div class="portfolio-card-meta">Automation · Pipeline Operations</div>
+        <h3 class="portfolio-card-title">Built a Pipeline Operations System with 10+ Tools. Cut a Full-Day Workflow to Under an Hour.</h3>
+        <p class="portfolio-card-desc">Multi-source discovery, automated enrichment, verified outreach, and pipeline review. The architecture maps to any high-volume prospecting operation.</p>
+        <div class="portfolio-card-outcome">90%+ reduction in pipeline operations time</div>
+        <div class="portfolio-card-link">View case study →</div>
+      </a>
+
+      <a href="portfolio/new-hire-training-redesign.html" class="portfolio-card">
+        <div class="portfolio-card-meta">Operational Design · Enablement</div>
+        <h3 class="portfolio-card-title">Cut New Hire Ramp Time by 33%. The Fix Was Not Better Training Content.</h3>
+        <p class="portfolio-card-desc">Reps were failing because the environment was designed wrong, not because they did not know enough. I changed the environment.</p>
+        <div class="portfolio-card-outcome">33% ramp time reduction, validated across 3 locations</div>
+        <div class="portfolio-card-link">View case study →</div>
+      </a>
 
     </div>
   </section>

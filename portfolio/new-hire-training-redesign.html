@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Hire Training Redesign | Mike Beck</title>
+  <meta name="description" content="Cut new hire ramp time by 33%. The fix was not better training content." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f12;
+      --bg2: #13161a;
+      --bg3: #1a1e24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #4169e1;
+      --accent2: #6688ff;
+      --text: #e8e6e1;
+      --muted: #7a7972;
+      --bright: #f5f2ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(13,15,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.back-link { color: var(--accent); }
+
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 9rem 3rem 6rem;
+    }
+
+    .project-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.75rem;
+    }
+
+    .project-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--bright);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .body-copy p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .numbers-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .numbers-header {
+      grid-column: 1 / -1;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .number-item {
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .number-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .number-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .what-shows {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .what-shows-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .what-shows p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      line-height: 1.8;
+    }
+
+    .back-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-nav a:hover { color: var(--accent); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(122,121,114,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-wrapper { padding: 7rem 1.5rem 4rem; }
+      .numbers-block { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Mike Beck</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#experience">Experience</a></li>
+      <li><a href="/#portfolio" class="back-link">← Portfolio</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <div class="project-label">Operational Design · Enablement</div>
+
+    <h1>Cut New Hire Ramp Time by 33%. The Fix Was Not Better Training Content.</h1>
+
+    <p class="subhead">Reps were failing because the environment was designed wrong, not because they did not know enough. I changed the environment.</p>
+
+    <div class="body-copy">
+      <p>New hires sat through four weeks of product and pricing training across a complex portfolio, then hit the phones cold. Their first live calls included every possible product combination and customer request type. No controlled practice, no progressive complexity, no pattern recognition. Every call was a new puzzle. Ramp to 100% quota attainment averaged three months post-training, and the conventional explanation was that the portfolio was just hard to learn.</p>
+
+      <p>The portfolio was not the problem. The training architecture was. Reps were being given all the knowledge upfront and none of the environment to apply it. I restructured the model around a learn/apply cycle: one product at a time, with live phone practice built in immediately after each module. But the model only worked if reps could practice on the right calls. That required a configuration change in the ACD (automatic call distributor) to route only single-product customers to new hire queues. I coordinated with technology and operations to set up the specialized skilling and routing rules within existing infrastructure. No new build. No new system. Just a configuration that made controlled learning possible.</p>
+
+      <p>From there, I layered in progressive complexity (gradually introducing multi-product interactions), integrated supervisor coaching earlier in the cycle, and built a repeatable coaching framework that frontline managers could run independently. The model was validated across three locations, two cohorts per location, with consistent results across all geographies. Ramp to 100% quota attainment dropped from three months to two months. The model remained the standard after my departure because it was built to run without ongoing facilitation.</p>
+    </div>
+
+    <div class="numbers-block">
+      <div class="numbers-header">By the Numbers</div>
+      <div class="number-item">
+        <span class="number-value">3 mo → 2 mo</span>
+        <span class="number-label">Ramp to 100% quota attainment (33% reduction)</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">36–72</span>
+        <span class="number-label">Reps validated across 3 locations, 2 cohorts per location</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">Consistent</span>
+        <span class="number-label">Performance improvement replicated across all geographies</span>
+      </div>
+      <div class="number-item">
+        <span class="number-value">Still running</span>
+        <span class="number-label">Model remained the standard after departure</span>
+      </div>
+    </div>
+
+    <div class="what-shows">
+      <div class="what-shows-label">What This Shows</div>
+      <p>The ability to diagnose structural problems that look like content or capability gaps, design system-level solutions that change the operating environment, coordinate cross-functional implementation, and build models that sustain without the person who created them.</p>
+    </div>
+
+    <div class="back-nav">
+      <a href="/#portfolio">← Back to Portfolio</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-name">Mike Beck · Phoenix, AZ</div>
+    <div class="footer-copy">Fractional RevOps &amp; GTM · Strength Coaching · Phoenix, AZ</div>
+  </footer>
+
+</body>
+</html>
