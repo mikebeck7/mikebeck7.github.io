@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>If Your Sales Team's Goals Don't Match the Company's Goals, You've Already Lost. | Mike Beck</title>
+  <meta name="description" content="Misaligned incentives are a structural problem, not a motivation problem." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f12;
+      --bg2: #13161a;
+      --bg3: #1a1e24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #4169e1;
+      --accent2: #6688ff;
+      --text: #e8e6e1;
+      --muted: #7a7972;
+      --bright: #f5f2ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(13,15,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    .post-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10rem 3rem 6rem;
+    }
+
+    .post-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .post-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--bright);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .post-body p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .post-body p strong {
+      color: var(--bright);
+      font-weight: 500;
+    }
+
+    .post-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(122,121,114,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .post-container { padding: 8rem 1.5rem 4rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Mike Beck</a>
+    <a href="/#writing" class="nav-back">← Writing</a>
+  </nav>
+
+  <div class="post-container">
+    <div class="post-eyebrow">Writing</div>
+    <h1 class="post-title">If Your Sales Team's Goals Don't Match the Company's Goals, You've Already Lost.</h1>
+
+    <div class="post-body">
+      <p>When a sales team underperforms, the first instinct is to look at the people.</p>
+      <p>Are they working hard enough? Do they need more training? Is the manager holding them accountable? These are reasonable questions. But there's a more fundamental question that often doesn't get asked: are the goals we're measuring actually the goals the business needs?</p>
+      <p>If they're not, it doesn't matter how hard the team works. They're pointed in the wrong direction.</p>
+
+      <hr class="post-divider" />
+
+      <p>I found this while looking at the overall channel structure for an inbound sales operation at a large telecommunications company.</p>
+      <p>The business had made a strategic shift. Leadership had moved from a unit-volume focus to a revenue focus. New customer acquisition was no longer the north star. Growing revenue per customer was.</p>
+      <p>The problem was that nobody had updated the channel to reflect it.</p>
+      <p>Reps were still being compensated heavily for volume-based activity: selling new units, bringing in new customers, chasing new opportunities. Their scorecards measured the same things. The KPIs reported to senior leadership were built on the same logic. The entire operating system of the channel was still running on the old strategy.</p>
+      <p>So reps did exactly what they were designed to do. When a call came in from an existing customer with revenue potential, they transferred it out to chase a new customer acquisition instead. That's what the comp plan rewarded. That's what the scorecard tracked. That's what the job looked like to them.</p>
+      <p>Nobody was doing anything wrong. The system was just pointed in the wrong direction.</p>
+
+      <hr class="post-divider" />
+
+      <p><strong>The cost was real and measurable.</strong></p>
+      <p>Call transfers were climbing, each one carrying a direct cost to the business. Overall conversion was declining. Revenue that could have been captured on existing customer calls was being walked out the door in pursuit of a metric the business no longer prioritized.</p>
+      <p>Senior leadership was still watching the old conversion metric as a north star, not realizing it was measuring activity the strategy had already moved away from.</p>
+
+      <hr class="post-divider" />
+
+      <p>The fix required updating three things in parallel: the compensation structure, the scorecards, and the KPIs. Not one at a time. All three together. Because if you change comp but leave the scorecard alone, reps get mixed signals. If you update the KPIs but don't change comp, nothing changes in the field.</p>
+      <p>The channel strategy, the measurement system, and the incentive structure all had to point at the same goal at the same time.</p>
+      <p>When they did, call transfers dropped, costs came down by $600K annually, and the channel started producing the revenue outcomes the business had been targeting.</p>
+
+      <hr class="post-divider" />
+
+      <p>The lightbulb moment for me wasn't finding a data anomaly or catching a mistake. It was stepping back and asking a simple question: why are we still measuring things this way when the business has already moved on?</p>
+      <p>That question doesn't get asked often enough. Strategies change. Priorities shift. But the operating infrastructure of a sales channel — comp plans, scorecards, KPIs, playbooks — tends to lag behind. It gets inherited, not redesigned. And the longer it runs on outdated logic, the more it costs.</p>
+      <p>If your team is working hard and the results still aren't there, it's worth asking whether the goals you're measuring are the goals that actually matter to the business right now.</p>
+      <p>They might not be. And that's not a people problem. It's a direction problem.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-name">Mike Beck · Phoenix, AZ</div>
+    <div class="footer-copy">Sales Strategy &amp; Operations · Phoenix, AZ</div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Don't Need More From Your Top Performers. You Need to Move the Middle. | Mike Beck</title>
+  <meta name="description" content="Why optimizing an incentive plan around top earners leaves your biggest performance opportunity untouched." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f12;
+      --bg2: #13161a;
+      --bg3: #1a1e24;
+      --border: rgba(255,255,255,0.07);
+      --accent: #4169e1;
+      --accent2: #6688ff;
+      --text: #e8e6e1;
+      --muted: #7a7972;
+      --bright: #f5f2ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(13,15,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bright);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    .post-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10rem 3rem 6rem;
+    }
+
+    .post-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .post-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--bright);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    .post-body p {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .post-body p strong {
+      color: var(--bright);
+      font-weight: 500;
+    }
+
+    .post-body ul {
+      list-style: none;
+      margin: 1rem 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .post-body ul li {
+      font-size: 0.95rem;
+      color: rgba(232,230,225,0.75);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      line-height: 1.7;
+    }
+
+    .post-body ul li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .post-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(122,121,114,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .post-container { padding: 8rem 1.5rem 4rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Mike Beck</a>
+    <a href="/#writing" class="nav-back">← Writing</a>
+  </nav>
+
+  <div class="post-container">
+    <div class="post-eyebrow">Writing</div>
+    <h1 class="post-title">You Don't Need More From Your Top Performers. You Need to Move the Middle.</h1>
+
+    <div class="post-body">
+      <p>When an incentive plan blows its budget, the instinct is to look at the top.</p>
+      <p>That's where the money is going. A small group of high performers found the accelerators, maxed them out, and are earning well above what the plan anticipated. Budget hits 180% of plan. The fix seems obvious: cap the top, reduce payout rates, get the spend under control.</p>
+      <p>It's a reasonable instinct. It's also the wrong one.</p>
+
+      <hr class="post-divider" />
+
+      <p>The team I worked with was about to make exactly this move. The incentive plan was designed for service and technical support agents. Non-sales employees with an opportunity to introduce products on customer calls as a secondary activity on top of their primary job. Not quota-carrying sellers. People doing something extra, when the moment was right.</p>
+      <p>Budget exposure was real, and the top earners were the most visible line item. The proposed fix was to cap earnings at the top tier and reduce payout rates across the board.</p>
+      <p>Before any changes were made, I looked at where the actual problem was.</p>
+      <p>The top performers weren't the problem. They were doing exactly what the plan was designed to encourage: finding opportunities and acting on them. The budget overrun was a concentration problem, not a design flaw at the top.</p>
+      <p>The real issue was in the middle. The majority of agents weren't participating in any meaningful way. The lower achievement tiers didn't pay enough to feel worth the effort. These weren't dedicated sellers. They had a primary job to do. If the incremental payout wasn't compelling, the incremental effort wasn't happening. So most of them didn't try.</p>
+      <p>Capping the top would have solved the budget problem by demoralizing the only people producing results. It wouldn't have moved the middle at all.</p>
+
+      <hr class="post-divider" />
+
+      <p><strong>The fix was structural.</strong></p>
+      <p>Instead of eliminating the top tier, we reduced the per-unit payout rate at the top, enough to bring budget exposure down materially, and used that margin to increase payouts in the lower achievement tiers. The top performers kept meaningful upside. The middle finally had a reason to try.</p>
+      <p>The results:</p>
+      <ul>
+        <li>Participation and achievement across the middle tiers increased significantly</li>
+        <li>Budget came down from 180% to 98% of plan</li>
+      </ul>
+      <p>Both moved in the right direction at the same time. That only happens when you fix the right problem.</p>
+
+      <hr class="post-divider" />
+
+      <p>The lesson applies well beyond incentive plans.</p>
+      <p>In any large group, a small percentage will perform at the top regardless of how the system is designed. They're wired that way. You're not going to unlock meaningfully more from them by tweaking a payout structure.</p>
+      <p>The middle is where the real leverage is. They're capable of more. They respond to incentives. But if the reward isn't worth the effort, especially when that effort is on top of their actual job, they'll make the rational choice and do nothing extra.</p>
+      <p>If your incentive plan is over budget and under-delivering on participation, don't start by looking at your top earners. Start by asking whether your lower tiers give the middle a real reason to engage.</p>
+      <p>That's usually where the answer is.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-name">Mike Beck · Phoenix, AZ</div>
+    <div class="footer-copy">Sales Strategy &amp; Operations · Phoenix, AZ</div>
+  </footer>
+
+</body>
+</html>

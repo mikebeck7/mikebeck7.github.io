@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mike Beck | Fractional RevOps & GTM Leader</title>
-  <meta name="description" content="Mike Beck is a fractional Revenue Operations and GTM Programs leader based in Phoenix, AZ. He builds and fixes RevOps and sales enablement for B2B companies at Series B and C." />
+  <title>Mike Beck | Sales Strategy & Operations Leader</title>
+  <meta name="description" content="Mike Beck is a Sales Strategy and Operations leader based in Phoenix, AZ. He builds the systems and strategies that fix revenue and growth problems for B2B organizations." />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -749,6 +749,68 @@
 
     .portfolio-card:hover .portfolio-card-link { color: var(--accent); }
 
+    /* ── WRITING ── */
+    .writing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      background: var(--border);
+    }
+
+    .writing-card {
+      background: var(--bg2);
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+
+    .writing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.3s ease;
+    }
+
+    .writing-card:hover::before { height: 100%; }
+    .writing-card:hover { background: var(--bg3); }
+
+    .writing-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--bright);
+      line-height: 1.25;
+    }
+
+    .writing-card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .writing-card-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .writing-card:hover .writing-card-link { color: var(--accent); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
@@ -775,6 +837,7 @@
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
       .form-row { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .writing-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -788,6 +851,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#writing">Writing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -797,9 +861,9 @@
     <div class="hero-content">
       <div class="hero-eyebrow">Phoenix, AZ — Open to Remote</div>
       <h1 class="hero-name">Mike<br /><em>Beck</em></h1>
-      <p class="hero-title">Fractional Revenue Operations & GTM Programs Leader</p>
+      <p class="hero-title">Sales Strategy &amp; Operations Leader</p>
       <p class="hero-desc">
-        I build and fix RevOps and GTM execution for B2B companies that have outgrown informal processes but aren't ready for a full-time senior ops hire.
+        I find the revenue and growth problems others aren't looking at and build the systems that fix them.
       </p>
       <div class="hero-location">
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 13-8 13S4 15.25 4 10a8 8 0 0 1 8-8z"/></svg>
@@ -844,21 +908,18 @@
     <div class="about-grid reveal">
       <div>
         <p class="about-philosophy">
-          "Good RevOps doesn't require a full-time hire. It requires the right operator at the right stage."
+          "Most teams don't have a talent problem. They have a direction problem."
         </p>
       </div>
       <div class="about-text">
         <p>
-          Over 12 years at Cox Communications, I built and optimized revenue operations across a <strong>$5B organization with 2,000+ GTM employees</strong>, architecting the systems, programs, and strategies that moved the needle at scale.
+          Over 12 years at Cox Communications, I built and optimized sales operations across a <strong>$5B organization with 2,000+ GTM employees</strong>, architecting the strategies, systems, and programs that moved the needle at scale.
         </p>
         <p>
-          I delivered <strong>$7.3M in incremental annual revenue</strong> through channel redesign, cut sales ramp time by 33%, generated $600K in annual cost savings, and drove 40% enrollment growth in a government subsidy program by removing post-sale friction from the customer journey.
+          I delivered <strong>$7.3M in incremental annual revenue</strong>, cut sales ramp time by 33%, generated $600K in annual cost savings, and drove 40% enrollment growth in a government subsidy program.
         </p>
         <p>
-          Today I work fractionally with <strong>Series B and C B2B companies</strong>, typically 50 to 300 employees, with an active sales team and no senior RevOps or GTM Ops leadership in seat. I build the systems, processes, and programs that close that gap. Engagements are typically 3 to 6 months with defined scope.
-        </p>
-        <p>
-          I also coach strength and conditioning. <a href="#services" style="color: var(--accent); text-decoration: none;">See coaching services.</a>
+          I work from the ground up, starting with the front line teams doing the work every day. That's where the real problems surface, and where the right solutions get built.
         </p>
       </div>
     </div>
@@ -871,10 +932,10 @@
         <span class="section-label">What I Deliver</span>
         <div class="section-line"></div>
       </div>
-      <div class="services-grid reveal">
+      <div class="services-grid reveal" style="grid-template-columns: 1fr;">
         <div class="service-card">
           <div class="service-number">01</div>
-          <h3 class="service-title">Revenue Operations<br />&amp; GTM Programs</h3>
+          <h3 class="service-title">Sales Strategy<br />&amp; Operations</h3>
           <ul class="service-list">
             <li>GTM motion design and launch planning</li>
             <li>Sales forecasting and headcount capacity models</li>
@@ -882,23 +943,9 @@
             <li>Cross-functional change management and rollout programs</li>
             <li>Operating cadences and stakeholder alignment frameworks</li>
             <li>Tech stack audits: Tableau, SQL, Salesforce</li>
+            <li>Gong program management and implementation</li>
           </ul>
-          <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--muted); line-height: 1.55;"><strong style="color: var(--text); font-weight: 500;">Who this is for:</strong> Series B and C B2B companies with active sales teams and no senior RevOps or GTM Ops leadership in seat.</p>
           <p style="margin-top: 1rem; font-size: 0.75rem; color: rgba(122,121,114,0.6); letter-spacing: 0.03em;">PROSCI Certified Change Management Practitioner</p>
-        </div>
-        <div class="service-card" style="background: var(--bg);">
-          <div class="service-number">02</div>
-          <h3 class="service-title">Strength &amp; Conditioning<br />Coaching</h3>
-          <ul class="service-list">
-            <li>Custom programming for athletes of all ages and fitness levels</li>
-            <li>Strength and aerobic conditioning components in every program</li>
-            <li>Built around what each person needs and what motivates them</li>
-            <li>Individual goal and performance focus</li>
-            <li>Accountability structure and progress tracking</li>
-            <li>Recovery and injury prevention protocols</li>
-          </ul>
-          <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--muted); line-height: 1.55;">I use "athlete" broadly. You don't have to play a sport. Anyone committed to improving their performance, health, or fitness qualifies.</p>
-          <p style="margin-top: 1rem; font-size: 0.75rem; color: rgba(122,121,114,0.6); letter-spacing: 0.03em;">CrossFit L2 Certified Coach</p>
         </div>
       </div>
     </div>
@@ -1025,12 +1072,36 @@
     </div>
   </section>
 
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="section-header reveal">
+      <span class="section-label">Writing</span>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title reveal" style="margin-bottom: 2.5rem;">Thought <em>Leadership</em></h2>
+    <div class="writing-grid reveal">
+
+      <a href="/writing/move-the-middle.html" class="writing-card">
+        <h3 class="writing-card-title">You Don't Need More From Your Top Performers. You Need to Move the Middle.</h3>
+        <p class="writing-card-desc">Why optimizing an incentive plan around top earners leaves your biggest performance opportunity untouched.</p>
+        <div class="writing-card-link">Read post →</div>
+      </a>
+
+      <a href="/writing/aligned-goals.html" class="writing-card">
+        <h3 class="writing-card-title">If Your Sales Team's Goals Don't Match the Company's Goals, You've Already Lost.</h3>
+        <p class="writing-card-desc">Misaligned incentives are a structural problem, not a motivation problem.</p>
+        <div class="writing-card-link">Read post →</div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <div class="contact-wrapper" id="contact">
     <div class="contact-inner">
       <div class="reveal">
         <p class="contact-intro">Ready to close <em>the gap?</em></p>
-        <p class="contact-sub">If your company has outgrown informal RevOps but you're not ready to hire a full-time senior leader, let's talk scope and fit. Coaching inquiries are welcome too.</p>
+        <p class="contact-sub">If you're looking for a sales strategy and operations leader, or want to explore consulting options, let's talk scope and fit.</p>
         <div class="contact-links">
           <a href="https://www.linkedin.com/in/mike-beck-360b2a88/" target="_blank" class="contact-link">
             <div class="contact-link-icon">
@@ -1069,7 +1140,6 @@
               <option value="">Select a topic</option>
               <option>Revenue Operations / GTM Role</option>
               <option>Fractional / Consulting Engagement</option>
-              <option>Strength & Conditioning Coaching</option>
               <option>Speaking / Collaboration</option>
               <option>Other</option>
             </select>
@@ -1087,7 +1157,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-name">Mike Beck · Phoenix, AZ</div>
-    <div class="footer-copy">Fractional RevOps &amp; GTM · Strength Coaching · Phoenix, AZ</div>
+    <div class="footer-copy">Sales Strategy &amp; Operations · Phoenix, AZ</div>
   </footer>
 
   <script>
